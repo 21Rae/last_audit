@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageSquare, X, Send } from 'lucide-react';
-import { AuditReport } from '../types';
-import { chatWithAuditor } from '../services/geminiService';
+import { AuditReport } from '../types.ts';
+import { chatWithAuditor } from '../services/geminiService.ts';
 
 interface Props {
   report: AuditReport;

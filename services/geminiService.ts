@@ -1,5 +1,5 @@
 import { GoogleGenAI, Type, Schema } from "@google/genai";
-import { AuditReport, AuditRequest } from "../types";
+import { AuditReport, AuditRequest } from "../types.ts";
 
 const processFile = async (file: File): Promise<string> => {
   return new Promise((resolve, reject) => {
@@ -18,12 +18,7 @@ const processFile = async (file: File): Promise<string> => {
 export const fileToBase64 = processFile;
 
 export const performAudit = async (request: AuditRequest): Promise<AuditReport> => {
-  const apiKey = process.env.API_KEY;
-  if (!apiKey) {
-    throw new Error("API Key is missing");
-  }
-
-  const ai = new GoogleGenAI({ apiKey });
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
   const schema: Schema = {
     type: Type.OBJECT,
@@ -134,10 +129,7 @@ export const performAudit = async (request: AuditRequest): Promise<AuditReport> 
 };
 
 export const chatWithAuditor = async (currentReport: AuditReport, message: string, chatHistory: {role: string, parts: any[]}[]): Promise<string> => {
-    const apiKey = process.env.API_KEY;
-    if (!apiKey) throw new Error("API Key Missing");
-
-    const ai = new GoogleGenAI({ apiKey });
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
     
     const systemInstruction = `You are the AI Auditor who just analyzed this store: ${currentReport.storeUrl}.
     Context of the audit:

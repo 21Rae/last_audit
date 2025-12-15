@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { AuditReport, IssuePriority, AuditIssue } from '../types';
-import { RadialScore } from './RadialScore';
+import { AuditReport, IssuePriority, AuditIssue } from '../types.ts';
+import { RadialScore } from './RadialScore.tsx';
 import { CheckCircle, ChevronDown, ChevronUp, Zap, Shield, Search, Smartphone, MessageSquare, Share2 } from 'lucide-react';
 import { Tooltip, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from 'recharts';
 
@@ -33,7 +33,7 @@ const CategoryIcon = ({ category }: { category: string }) => {
   }
 };
 
-const IssueCard = ({ issue }: { issue: AuditIssue }) => {
+const IssueCard: React.FC<{ issue: AuditIssue }> = ({ issue }) => {
   const [expanded, setExpanded] = useState(false);
 
   return (

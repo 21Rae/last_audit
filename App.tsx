@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { HashRouter } from 'react-router-dom';
-import { performAudit, fileToBase64 } from './services/geminiService';
-import { AuditReport, AuditRequest } from './types';
-import { AuditDashboard } from './components/AuditDashboard';
-import { ChatAssistant } from './components/ChatAssistant';
+import { performAudit, fileToBase64 } from './services/geminiService.ts';
+import { AuditReport, AuditRequest } from './types.ts';
+import { AuditDashboard } from './components/AuditDashboard.tsx';
+import { ChatAssistant } from './components/ChatAssistant.tsx';
 import { ArrowRight, Upload, Zap, Globe, ShoppingBag, LayoutTemplate } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
