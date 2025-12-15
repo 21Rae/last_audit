@@ -127,9 +127,9 @@ export const AuditDashboard: React.FC<Props> = ({ data, onRestart }) => {
           </div>
 
           {/* Category Radar */}
-          <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm md:col-span-2">
+          <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm md:col-span-2 min-w-0">
              <h3 className="text-lg font-bold text-slate-900 mb-4">Category Breakdown</h3>
-             <div className="h-64 w-full">
+             <div className="h-64 w-full relative">
                <ResponsiveContainer width="100%" height="100%">
                  <RadarChart cx="50%" cy="50%" outerRadius="80%" data={radarData}>
                     <PolarGrid stroke="#e2e8f0" />
