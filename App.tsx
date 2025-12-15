@@ -99,8 +99,8 @@ function App() {
                   See exactly what's killing your sales and get step-by-step fixes.
                 </p>
                 
-                <form onSubmit={startAudit} className="bg-white p-2 rounded-2xl shadow-xl border border-slate-200 flex flex-col md:flex-row gap-2 max-w-2xl mx-auto">
-                  <div className="flex-1 px-4 py-3">
+                <form onSubmit={startAudit} className="bg-white p-2 rounded-2xl shadow-xl border border-slate-200 flex flex-col md:flex-row max-w-2xl mx-auto">
+                  <div className="flex-1 px-4 py-3 border-b border-slate-100 md:border-b-0 md:border-r">
                      <label className="block text-xs font-bold text-slate-400 uppercase tracking-wide mb-1">Store URL</label>
                      <input 
                        required
@@ -112,13 +112,12 @@ function App() {
                        onChange={handleInputChange}
                      />
                   </div>
-                  <div className="w-px bg-slate-100 hidden md:block"></div>
                   <div className="md:w-1/3 px-4 py-3">
                      <label className="block text-xs font-bold text-slate-400 uppercase tracking-wide mb-1">Niche (Optional)</label>
                      <input 
                        name="niche"
                        type="text" 
-                       placeholder="e.g. Fashion, Tech" 
+                       placeholder="e.g. Fashion" 
                        className="w-full bg-white outline-none text-slate-900 placeholder-slate-400 font-medium"
                        value={formData.niche}
                        onChange={handleInputChange}
@@ -126,7 +125,7 @@ function App() {
                   </div>
                   <button 
                     type="submit"
-                    className="bg-brand-600 hover:bg-brand-700 text-white rounded-xl px-8 py-4 font-bold text-lg transition-all flex items-center justify-center gap-2 shadow-lg shadow-brand-200"
+                    className="bg-brand-600 hover:bg-brand-700 text-white rounded-xl px-8 py-3 md:py-0 font-bold text-lg transition-all flex items-center justify-center gap-2 shadow-lg shadow-brand-200 m-1"
                   >
                     Audit <ArrowRight className="w-5 h-5" />
                   </button>

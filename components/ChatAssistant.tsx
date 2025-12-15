@@ -58,7 +58,7 @@ export const ChatAssistant: React.FC<Props> = ({ report }) => {
       )}
 
       {isOpen && (
-        <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 w-80 sm:w-96 flex flex-col h-[500px] overflow-hidden">
+        <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 w-80 sm:w-96 flex flex-col h-[500px] max-h-[80vh] overflow-hidden">
           <div className="bg-brand-600 p-4 flex justify-between items-center text-white">
              <div className="flex items-center gap-2">
                <div className="bg-white/20 p-1.5 rounded-lg">

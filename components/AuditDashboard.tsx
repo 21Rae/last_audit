@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { AuditReport, IssuePriority, AuditIssue } from '../types';
 import { RadialScore } from './RadialScore';
-import { AlertTriangle, CheckCircle, ChevronDown, ChevronUp, Zap, Shield, Search, Smartphone, MessageSquare, ArrowRight, Share2 } from 'lucide-react';
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from 'recharts';
+import { CheckCircle, ChevronDown, ChevronUp, Zap, Shield, Search, Smartphone, MessageSquare, Share2 } from 'lucide-react';
+import { Tooltip, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from 'recharts';
 
 interface Props {
   data: AuditReport;
@@ -26,7 +26,7 @@ const CategoryIcon = ({ category }: { category: string }) => {
   switch (category) {
     case 'CRO': return <Zap className="w-5 h-5 text-purple-600" />;
     case 'Trust': return <Shield className="w-5 h-5 text-blue-600" />;
-    case 'Speed': return <Zap className="w-5 h-5 text-yellow-600" />; // Reusing Zap implies speed too
+    case 'Speed': return <Zap className="w-5 h-5 text-yellow-600" />; 
     case 'SEO': return <Search className="w-5 h-5 text-green-600" />;
     case 'Mobile': return <Smartphone className="w-5 h-5 text-pink-600" />;
     default: return <MessageSquare className="w-5 h-5 text-slate-600" />;
@@ -92,6 +92,8 @@ export const AuditDashboard: React.FC<Props> = ({ data, onRestart }) => {
     A: cat.score,
     fullMark: 100,
   }));
+
+  const priorityOrder: Record<string, number> = { 'High': 3, 'Medium': 2, 'Low': 1 };
 
   return (
     <div className="min-h-screen bg-slate-50 pb-20">
@@ -165,8 +167,7 @@ export const AuditDashboard: React.FC<Props> = ({ data, onRestart }) => {
 
           <div className="space-y-4">
              {data.issues.sort((a, b) => {
-               const p = { 'High': 3, 'Medium': 2, 'Low': 1 };
-               return p[b.priority] - p[a.priority];
+               return (priorityOrder[b.priority] || 0) - (priorityOrder[a.priority] || 0);
              }).map((issue) => (
                <IssueCard key={issue.id} issue={issue} />
              ))}
